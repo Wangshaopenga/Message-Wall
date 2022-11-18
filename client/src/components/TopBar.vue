@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white shadow h-52px w100% flex items-center justify-between relative dark:bg-#222 dark:shadow">
+  <div class="bg-#f5f5f7 shadow h-52px w100% flex items-center justify-between relative dark:bg-#222 dark:shadow">
     <div class="relative inset-l-1.5% flex-[1] flex h100%  items-center text-4 text-center leading-52px font-700 select-none overflow-hidden">
       <img w32px h32px cursor-pointer hover:scale-110 transition-transform-500 src="@/assets/images/logo.svg" alt="">
       <span class="cursor-pointer  pl2 whitespace-nowrap display-none text-20px md:block">一刻时光</span>
