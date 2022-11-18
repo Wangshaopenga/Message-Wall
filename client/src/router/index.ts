@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    redirct: 'message',
+    redirect: 'message',
     component: () => import('@/views/Home.vue'),
     children: [
       {
