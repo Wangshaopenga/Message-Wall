@@ -4,6 +4,7 @@ import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
+import Pages from 'vite-plugin-pages'
 
 export default defineConfig({
   resolve: {
@@ -15,7 +16,8 @@ export default defineConfig({
     Vue({
       reactivityTransform: true,
     }),
-
+    Pages({
+    }),
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
@@ -28,7 +30,7 @@ export default defineConfig({
       dirs: [
         './src/composables',
         './src/store',
-        './src/composables',
+        './src/types',
       ],
       vueTemplate: true,
     }),

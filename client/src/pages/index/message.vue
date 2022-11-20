@@ -8,7 +8,7 @@
       <div class="item" @click="isActive = index" :class="{ active: index === isActive }" v-for="(item, index) in categories" :key="item">{{ item }}</div>
     </div>
     <div class="main">
-      <div class="card-box" v-for="i in 10" :key="i">
+      <div class="card-box" @click="click" v-for="i in 10" :key="i">
         <div class="card-top">
           <p class="">22-11-18 21:09</p>
           <p class="">爱情</p>
@@ -34,15 +34,22 @@
 </template>
 
 <script setup lang='ts'>
+import { getMessage } from '@/utils/api'
+
 const categories: string[] = ['全部', '留言', '目标', '理想', '过去', '将来', '爱情', '亲情', '友情', '秘密', '信条', '无题']
 let isActive = $ref(0)
 let color = ref('#e1f6d8')
 const content = $ref('这是一段暖心的话，它或许不长，但是它是我现在最想说的。放在这里就留一个纪念吧，不用回头看，应为现在才是当下最好的。这是一段暖心的话，它或许不长，但是它是我现在最想说的。放在这里就留一个纪念吧。')
+
+async function click() {
+  const messages = await getMessage()
+  console.log(messages)
+}
 </script>
 
 <style lang="scss" scoped>
 .message-wall {
-  @apply w100% flex p56px flex-col bg-#f2f2f2 items-center justify-center dark:bg-#1e1e1e;
+  @apply w100% flex px56px py36px flex-col bg-#f2f2f2 mt-52px items-center justify-center dark:bg-#1e1e1e;
   .top {
     @apply text-center;
     .title {
