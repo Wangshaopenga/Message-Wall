@@ -6,9 +6,19 @@ import { UpdateMessageDto } from './dto/update-message.dto'
 
 @Injectable()
 export class MessageService {
-  constructor(private prisma: PrismaService, private config: ConfigService) {}
-  create(createMessageDto: CreateMessageDto) {
-    return 'This action adds a new message'
+  constructor(private prisma: PrismaService, private config: ConfigService) { }
+
+  async create(dto: CreateMessageDto) {
+    try {
+      dto.color = dto.color || '#e1d5ef'
+      await this.prisma.messages.create({ data: dto })
+      return {
+        message: '创建成功!',
+      }
+    }
+    catch (error) {
+      throw new BadRequestException()
+    }
   }
 
   async findAll(page: number = 1, categoryId: number) {
@@ -62,11 +72,32 @@ export class MessageService {
     }
   }
 
-  update(id: number, updateMessageDto: UpdateMessageDto) {
-    return `This action updates a #${id} message`
+  async update(id: number, dto: UpdateMessageDto) {
+    try {
+      await this.prisma.messages.update({
+        where: { id },
+        data: {
+          ...dto,
+        },
+      })
+      return {
+        message: '更新成功',
+      }
+    }
+    catch (error) {
+      throw new BadRequestException()
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} message`
+  async remove(id: number) {
+    try {
+      await this.prisma.messages.delete({ where: { id } })
+      return {
+        message: '删除成功',
+      }
+    }
+    catch (error) {
+      throw new BadRequestException('留言不存在')
+    }
   }
 }
