@@ -1,7 +1,7 @@
 import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { HttpExceptionFilter } from './filters/http-exception.filter'
-import { TransformInterceptor } from './interceptor/transform.interceptor'
+import { TransformInterceptor } from './interceptors/transform.interceptor'
 import { AppModule } from './modules/app/app.module'
 
 async function bootstrap() {
